@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock title %}
+
+{% block homeactive %} active {% endblock homeactive %}
+
+{% block body %}
+<div class="container my-3">
+    <div class="jumbotron" align="center">
+        <h1 class="display-4">Welcome to iCoder</h1>
+        <p class="lead">We provide the best Tech Blogs in the market</p>
+        <hr class="my-4">
+        <p>You want to check out our latest blogs?</p>
+        <a class="btn btn-primary btn-lg" href="/blog" role="button">Go to Blog</a>
+    </div>
+</div>
+
+<div class="container">
+    <h2>Popular Blogposts</h2><br>
+    {% for post in allPosts %}
+    <div class="row no-gutters border rounded overflow-hidden flex-md-row my-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Article by: {{post.author}}</strong>
+            <h3 class="mb-0">{{post.title}}</h3>
+            <div class="mb-1 text-muted">{{post.timeStamp}}</div>
+            <p class="card-text mb-auto">{{post.content| safe | truncatechars:500}}</p>
+            <a href="/blog/{{post.slug}}" class="stretched-link">Continue reading</a>
+        </div>
+    </div>
+
+<!--    <div class="row mb-2">-->
+<!--        {% for post in allPost %}-->
+
+<!--        <div class="col-md-6">-->
+<!--            <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">-->
+<!--                <div class="col p-4 d-flex flex-column position-static">-->
+<!--                    <strong class="d-inline-block mb-2 text-primary">{{post.title}}</strong>-->
+<!--                    <h3 class="mb-0">{{post.title}}</h3>-->
+<!--                    <div class="mb-1 text-muted">{{post.timeStamp}}</div>-->
+<!--                    <p class="card-text mb-auto">{{post.content | safe | truncatechars:300}}...</p>-->
+<!--                    <a href="blogpost/{{item.post_id}}" class="stretched-link">Continue reading</a>-->
+<!--                </div>-->
+<!--                <div class="col-auto d-none d-lg-block">-->
+<!--                    <img src = "/media/{{item.thumbnail}}" class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">-->
+<!--                    <title>Placeholder</title>-->
+<!--                    <rect width="100%" height="100%" fill="#55595c"></rect></img>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        {% if forloop.counter|divisibleby:2 %}-->
+<!--    </div><div class="row mb-2">-->
+<!--    {% endif %}-->
+<!--    {% endfor %}-->
+<!--</div>-->
+
+
+{% endfor %}
+{% endblock body %}
